@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Практика_2</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      var contacts = [
+          {
+            firstName: 'Dmitry',
+            lastName: 'Kozlov',
+            birthDay: '16.07.1990',
+  		      phones: [ '89001234567',
+  			              '83431234567'
+  	                  ]
+  	      },
+  	      {
+  		      firstName: 'Ivan',
+  		      lastName: 'Petrov',
+  		      birthDay: '08.06.1956',
+  		      phones: [ '89001234567',
+  			              '83431234567'
+  		                ]
+  	      }
+        ];
+
+      function addUser(contacts) {
+
+          var contact = {};
+
+          contact.firstName = prompt('Введите имя:');
+          contact.lastName = prompt('Введите фамилию:');
+          contact.birthDay = prompt('Дата рождения:');
+          contact.phones = [];
+          while (true) {
+              var phone = prompt('Номер телефона (Чтобы выйти нажмите enter):');
+
+              if (!phone) {
+                break;
+              }
+              contact.phones.push(phone);
+          }
+          contacts.push(contact);
+        }
+
+        function addId (contacts){
+          for (var i = 0; i <= (contacts.length - 1) ; i++) {
+            contacts[i].id = (i + 1);
+          }
+          return contacts
+        }
+
+        function csvFormat_1(contacts) {
+          var csvString = '';
+
+          for (var i = 0; i <= (contacts.length - 1); i++) {
+            for (var countObj in contacts[i]) {
+              if (countObj != 'phones') {
+                csvString += '"' + contacts[i][countObj] + '"' + ";";
+              } else {
+                for (var j = 0; j <= (contacts[i][countObj].length - 1); j++) {
+                  csvString += '"' + contacts[i][countObj][j] + '"' + ";";
+                }
+              }
+            }
+            console.log(csvString.substring(0, csvString.length - 1));
+            csvString = '';
+          }
+        }
+
+      console.log(addUser(contacts));
+      console.log(addId (contacts));
+      csvFormat_1(contacts);
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>color conversion</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function colorConversion (red, green, blue) {
+        var colorHex, rgbResidue, rgbWhole, rgbColor, rgbHex, rgbDec, count = 0;
+
+        rgbColor = [red, green, blue];
+        colorHex = '#';
+        rgbHex = ['A','B','C','D','E','F'];
+        rgbDec = [10, 11, 12, 13, 14, 15];
+
+        while (count <= 2) {
+          rgbWhole = Math.floor(rgbColor[count] / 16); //  целая часть от деления на 16
+          rgbResidue = rgbColor[count] % 16; //  остаток от деления на 16
+
+          colorHex += ((rgbDec.indexOf(rgbWhole) != -1) ? // если целая часть входит в массив rgbDec,
+           rgbHex[rgbDec.indexOf(rgbWhole)] : // то в colorHex записываем значение rgbHex, по соответствующему индексу rgbDec
+           rgbWhole.toString());
+
+           colorHex += ((rgbDec.indexOf(rgbResidue) != -1) ? // если целая часть входит в массив rgbDec,
+            rgbHex[rgbDec.indexOf(rgbResidue)] : // то в colorHex записываем значение rgbHex, по соответствующему индексу rgbDec
+            rgbResidue.toString());
+
+          ++count;
+        }
+
+        console.log(colorHex);
+      }
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>objectToQueryString</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function objectToQueryString(object) {
+
+        var printObjString = '';
+
+        for (var countObj in object) { // перебираем идентификаторы и значения объекта
+          printObjString += countObj + '=' + object[countObj] + '&'; // и записываем в строку
+        }
+
+        return printObjString.substring(0, printObjString.length - 1); // выводим строку, за исключением последнего элемента
+      }
+
+
+    </script>
+  </body>
+</html>

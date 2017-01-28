@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>obj_convert</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function convertToObj (number) {
+        var strNumber, objNumber = {};
+        if (number > 999) {
+          console.log('Число больше 999');
+        } else {
+          strNumber = number.toString().split('');
+
+          if (strNumber.length === 2)  {
+            strNumber[2] = strNumber[1];
+            strNumber[1] = strNumber[0];
+            strNumber[0] = undefined;
+          } else if (strNumber.length === 1) {
+            strNumber[2] = strNumber[0];
+            strNumber[1] = undefined;
+            strNumber[0] = undefined;
+          }
+
+          objNumber.units = (strNumber[2] != undefined) ? strNumber[2] : 'число не задано!';
+          objNumber.dozens = (strNumber[1] != undefined) ? strNumber[1] : 'число не задано!';
+          objNumber.hundreds = (strNumber[0] != undefined) ? strNumber[0] : 'число не задано!';
+        }
+        return objNumber;
+      }
+
+      console.log(convertToObj(10000));
+
+    </script>
+  </body>
+</html>
